@@ -1,0 +1,131 @@
+<!-- 9. Faça uma página web que receba a idade, o peso e o gênero de 10 pessoas. Calcule
+e imprima:
+• total de homens;
+• total de mulheres;
+• média das idades dos homens;
+• média dos pesos das mulheres. -->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/vetor.css">
+    <title>VETOR - Exercicio 9</title>
+  </head>
+  <body>
+
+    <header>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="v-exercicio-1.html">Ex. 1</a>
+        <a href="v-exercicio-2.html">Ex. 2</a>
+        <a href="v-exercicio-3.html">Ex. 3</a>
+        <a href="v-exercicio-4.html">Ex. 4</a>
+        <a href="v-exercicio-5.html">Ex. 5</a>
+        <a href="v-exercicio-6.html">Ex. 6</a>
+        <a href="v-exercicio-7.html">Ex. 7</a>
+        <a href="v-exercicio-8.html">Ex. 8</a>
+        <a href="v-exercicio-9.html">Ex. 9</a>
+        <a href="v-exercicio-10.html">Ex. 10</a>
+      </nav>
+    </header>
+    <div class="container">
+      <h2>CADASTRO DE PESSOAS</h2>
+      <p>Cadastre 10 pessoas e faremos os cálculos.</p>
+      <form id="formCadastro">
+        <div>
+          <label for="nome">Nome:</label>
+          <input type="text" id="nome" required />
+        </div>
+        <br>
+        <div>
+          <label for="idade">Idade:</label>
+          <input type="number" id="idade" required />
+        </div>
+        <br>
+        <div>
+          <label for="peso">Peso:</label>
+          <input type="number" id="peso" step="0.1" required />
+        </div>
+        <br>
+        <div>
+          <label for="genero">Gênero:</label>
+          <select id="genero" required>
+            <option value="masculino">Masculino</option>
+            <option value="feminino">Feminino</option>
+          </select>
+        </div>
+        <br>
+        <button type="submit">Adicionar</button>
+      </form>
+
+      <h3>Resultados</h3>
+      <p>Total de homens: <span id="totalHomens">0</span></p>
+      <p>Total de mulheres: <span id="totalMulheres">0</span></p>
+      <p>Média das idades dos homens: <span id="mediaIdadeHomens">0</span></p>
+      <p>Média dos pesos das mulheres: <span id="mediaPesoMulheres">0</span></p>
+    </div>
+
+    <script>
+      let homens = [];
+      let mulheres = [];
+
+      document
+        .getElementById("formCadastro")
+        .addEventListener("submit", function (evento) {
+          evento.preventDefault();
+
+          // Obtendo os valores dos inputs
+          const nome = document.getElementById("nome").value;
+          const idade = parseInt(document.getElementById("idade").value);
+          const peso = parseFloat(document.getElementById("peso").value);
+          const genero = document.getElementById("genero").value;
+
+          if (genero === "masculino") {
+            homens.push({ idade, peso });
+          } else {
+            mulheres.push({ idade, peso });
+          }
+
+          // Atualizando os resultados
+          atualizarResultados();
+
+          // Limpando os campos do formulário
+          document.getElementById("formCadastro").reset();
+        });
+
+      function atualizarResultados() {
+        // Total de homens e mulheres
+        document.getElementById("totalHomens").textContent = homens.length;
+        document.getElementById("totalMulheres").textContent = mulheres.length;
+
+        // Média das idades dos homens
+        if (homens.length > 0) {
+          const somaIdadesHomens = homens.reduce(
+            (acc, pessoa) => acc + pessoa.idade,
+            0
+          ); //ACC -> atualiza toda vez que adicionar uma mulher, contando a partir do 0.
+          document.getElementById("mediaIdadeHomens").textContent = (
+            somaIdadesHomens / homens.length
+          ).toFixed(2);
+        } else {
+          document.getElementById("mediaIdadeHomens").textContent = "0";
+        }
+
+        // Média dos pesos das mulheres
+        if (mulheres.length > 0) {
+          const somaPesosMulheres = mulheres.reduce(
+            (acc, pessoa) => acc + pessoa.peso,
+            0
+          );
+          document.getElementById("mediaPesoMulheres").textContent = (
+            somaPesosMulheres / mulheres.length
+          ).toFixed(2);
+        } else {
+          document.getElementById("mediaPesoMulheres").textContent = "0";
+        }
+      }
+    </script>
+  </body>
+</html>

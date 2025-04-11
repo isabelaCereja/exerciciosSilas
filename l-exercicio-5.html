@@ -1,0 +1,51 @@
+<!-- Faça uma página web que imprima os números pares no HTML até o limite digitado pelo usuário. Então, o usuário digitará um valor e ao clicar no botão, os valores serão exibidos. Exemplo: Se digitou 10, o programa vai mostrar 2,4,6,8. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOOP - Exercício 5</title>
+    <link rel="stylesheet" href="css/loop.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="index.html">Home </a>
+      <a href="l-exercicio-1.html">Ex. 1</a>
+      <a href="l-exercicio-2.html">Ex. 2</a>
+      <a href="l-exercicio-3.html">Ex. 3</a>
+      <a href="l-exercicio-4.html">Ex. 4</a>
+      <a href="l-exercicio-5.html">Ex. 5</a>
+      <a href="l-exercicio-6.html">Ex. 6</a>
+    </nav>
+  </header>
+
+      <div class="container">
+        <h2>EXIBIR NÚMEROS PARES</h2>
+        <p>Digite um número limite:</p>
+        <input type="number" id="limite" placeholder="Digite um número" />
+        <button onclick="mostrarPares()">Exibir</button>
+        <div id="resultado"></div>
+      </div>
+    
+      <script>
+        function mostrarPares() {
+          const limite = parseInt(document.getElementById('limite').value);
+          const resultado = document.getElementById('resultado');
+          resultado.innerHTML = ''; // Limpa resultado anterior
+    
+          if (isNaN(limite) || limite < 2) {
+            resultado.innerHTML = '<p>Por favor, insira um número válido maior que 1.</p>';
+            return;
+          }
+    
+          for (let i = 2; i < limite; i += 2) {
+            const span = document.createElement('span');
+            span.textContent = i + ' ';
+            resultado.appendChild(span);
+          }
+        }
+      </script>
+    </body>
+    </html>

@@ -1,0 +1,71 @@
+<!-- Faça uma página web em que o usuário entra com a altura e o peso. 
+    Calcule o IMC, mostre o resultado e informe seu status no html.
+    IMC = peso/(altura*altura). -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BÁSICO - Exercício 4</title>
+    <link rel="stylesheet" href="css/basico.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="b-exercicio-3.html">Ex. 3</a>
+        <a href="b-exercicio-4.html">Ex. 4</a>
+      </nav>
+    </header>
+
+
+    <div class="container">
+      <h1>Calcular IMC</h1>
+
+      <label for="altura">Altura (em metros):</label>
+      <input type="number" id="altura" name="altura" />
+
+      <label for="peso">Peso (em kg):</label>
+      <input type="number" id="peso" name="peso" />
+
+      <button onclick="calcularIMC()">
+        <span>Calcular IMC</span>
+      </button>
+
+      <p id="resultado"></p>
+
+      <script>
+        function calcularIMC() {
+          let altura = parseFloat(document.getElementById("altura").value);
+          let peso = parseFloat(document.getElementById("peso").value);
+          let imc = peso / (altura * altura);
+
+          let resultado = document.getElementById("resultado");
+
+          if (imc < 18.5) {
+            resultado.innerHTML = `IMC: ${imc.toFixed(
+              2
+            )}. <br> Abaixo do peso ideal.`;
+          } else if (imc < 25) {
+            resultado.innerHTML = `IMC: ${imc.toFixed(2)}. <br> Peso ideal.`;
+          } else if (imc < 30) {
+            resultado.innerHTML = `IMC: ${imc.toFixed(2)}. <br> Sobrepeso.`;
+          } else if (imc < 35) {
+            resultado.innerHTML = `IMC: ${imc.toFixed(
+              2
+            )}. <br> 1° grau de obesidade.`;
+          } else if (imc < 40) {
+            resultado.innerHTML = `IMC: ${imc.toFixed(
+              2
+            )}. <br> 2° grau de obesidade.`;
+          } else {
+            resultado.innerHTML = `IMC: ${imc.toFixed(
+              2
+            )}. <br> 3° grau de obesidade.`;
+          }
+        }
+      </script>
+    </div>
+  </body>
+</html>

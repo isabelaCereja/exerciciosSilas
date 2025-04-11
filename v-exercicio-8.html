@@ -1,0 +1,54 @@
+<!-- Você está no Brasil, e para temperatura usamos o grau Celsius. Porém, quando
+você for contrato para trabalhar como programador no exterior, deverá usar
+graus Fahrenheit. Faça uma página web que você fornece a temperatura em
+graus Celsius, e seu programa faz a conversão para graus Fahrenheit. -->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VETOR - Exercicio 8</title>
+    <link rel="stylesheet" href="css/vetor.css">
+</head>
+<body>
+    <header>
+        <nav>
+          <a href="index.html">Home</a>
+          <a href="v-exercicio-1.html">Ex. 1</a>
+          <a href="v-exercicio-2.html">Ex. 2</a>
+          <a href="v-exercicio-3.html">Ex. 3</a>
+          <a href="v-exercicio-4.html">Ex. 4</a>
+          <a href="v-exercicio-5.html">Ex. 5</a>
+          <a href="v-exercicio-6.html">Ex. 6</a>
+          <a href="v-exercicio-7.html">Ex. 7</a>
+          <a href="v-exercicio-8.html">Ex. 8</a>
+          <a href="v-exercicio-9.html">Ex. 9</a>
+          <a href="v-exercicio-10.html">Ex. 10</a>
+        </nav>
+      </header>
+
+    <div class="container">
+        <h1>CONVERSÃO DE CELSIUS PARA FARENHEIT</h1>
+
+        <label for="celsius">Temperatura em Celsius:</label>
+        <input type="number" id="celsius" placeholder="Digite a temperatura em °C">
+        <button onclick="converterTemperatura()">Converter</button>
+    
+        <div id="resultado"></div>
+    </div>
+
+    <script>
+        function converterTemperatura() {
+            const celsius = document.getElementById('celsius').value;
+            if (celsius === '') {
+                alert('Por favor, insira um valor para Celsius');
+                return;
+            }
+
+            const fahrenheit = (celsius * 9/5) + 32;
+            document.getElementById('resultado').innerHTML = `${celsius}°C é igual a ${fahrenheit}°F`;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!-- Faça uma página web que o usuário digitará dois números inteiros, e oprograma calculará a soma de todos os inteiros existentes entre os valores.
+Exemplo: Se digitou 10 e 15 o programa vai somar 11+12+13+14 e exibir 50.
+Exiba a resposta no HTML -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOOP - Exercício 6</title>
+    <link rel="stylesheet" href="css/loop.css">
+</head>
+<body>
+
+    <header>
+        <nav>
+          <a href="index.html">Home </a>
+          <a href="l-exercicio-1.html">Ex. 1</a>
+          <a href="l-exercicio-2.html">Ex. 2</a>
+          <a href="l-exercicio-3.html">Ex. 3</a>
+          <a href="l-exercicio-4.html">Ex. 4</a>
+          <a href="l-exercicio-5.html">Ex. 5</a>
+          <a href="l-exercicio-6.html">Ex. 6</a>
+        </nav>
+      </header>
+      
+    <div class="container">
+        <h1>SOMA ENTRE DOIS NÚMEROS</h1>
+        <p>Calculamos a soma de todos os inteiros existentes entre os valores.
+            Ex: Se digitou 10 e 15 o programa vai somar 11+12+13+14 e exibir 50.</p>
+        <label for="inicio">Digite um número:</label>
+        <input type="number" id="inicio" required><br><br>
+    
+        <label for="fim">Digite outro:</label>
+        <input type="number" id="fim" required><br><br>
+    
+        <button onclick="soma()">Calcular</button>
+    
+        <p id="resultado"></p>    
+    </div>
+    <script>
+        function soma() {
+
+            var inicio = parseInt(document.getElementById('inicio').value);
+            var fim = parseInt(document.getElementById('fim').value);
+            
+            if (inicio >= fim) {
+                alert("O número de início deve ser menor que o número final");
+                return;
+            }
+            var soma = 0;
+            for (var i = inicio + 1; i < fim; i++) {
+                soma += i;
+            }
+
+            document.getElementById('resultado').innerText = "soma: " + soma;
+        }
+    </script>
+</body>
+</html>

@@ -16,5 +16,5 @@ A equipe responsável por desenvolver esse projeto é composta por:
 - **Cucick2007** (Manuela Cucick);
 
 
-🔗 Acesse nossa atividade: https://isabelacereja.github.io/exerciciosSilas/
+🔗 Acesse nossa atividade: [Bateria de Exercícios](https://escandioneider.github.io/bateria-de-exercicios-PFE2/)
 
