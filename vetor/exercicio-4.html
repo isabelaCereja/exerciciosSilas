@@ -1,0 +1,62 @@
+<!-- Peça para o usuário digitar uma data. Exiba separadamente o dia, o mês e o
+ano. (Obs.: não necessita de laço de repetição. Utilize o Split) -->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VETOR - Exercício 4</title>
+    <link rel="stylesheet" href="/css/vetor.css">
+  </head>
+  <body>
+
+    <header>
+      <nav>
+        <a href="/index.html">Home</a>
+        <a href="/vetor/exercicio-1.html">Ex. 1</a>
+        <a href="/vetor/exercicio-2.html">Ex. 2</a>
+        <a href="/vetor/exercicio-3.html">Ex. 3</a>
+        <a href="/vetor/exercicio-4.html">Ex. 4</a>
+        <a href="/vetor/exercicio-5.html">Ex. 5</a>
+        <a href="/vetor/exercicio-6.html">Ex. 6</a>
+        <a href="/vetor/exercicio-7.html">Ex. 7</a>
+        <a href="/vetor/exercicio-8.html">Ex. 8</a>
+        <a href="/vetor/exercicio-9.html">Ex. 9</a>
+        <a href="/vetor/exercicio-10.html">Ex. 10</a>
+      </nav>
+    </header>
+
+    <div class="container">
+      <h1>SEPARAR DATA</h1>
+      <p>Digite uma data no formato DD/MM/AAAA:</p>
+      <input type="text" id="data" placeholder="DD/MM/AAAA" />
+      <button onclick="exibirData()">Exibir Data Separada</button>
+
+      <div id="resultado"></div>
+    </div>
+
+    <script>
+      function exibirData() {
+        const data = document.getElementById("data").value;
+
+        if (data) {
+          //considerando DD/MM/AAAA
+          const partes = data.split("/");
+
+          const dia = partes[0];
+          const mes = partes[1];
+          const ano = partes[2];
+
+          document.getElementById("resultado").innerHTML = `
+                    <p><strong>Dia:</strong> ${dia}</p>
+                    <p><strong>Mês:</strong> ${mes}</p>
+                    <p><strong>Ano:</strong> ${ano}</p>
+                `;
+        } else {
+          alert("Por favor, digite uma data válida.");
+        }
+      }
+    </script>
+  </body>
+</html>

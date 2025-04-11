@@ -1,0 +1,47 @@
+<!-- Peça ao usuário para digitar alguns nomes e os guarde em um vetor. Exiba na tela todos os nomes digitados, porém de maneira invertida (do último para o primeiro). (Utilizar o Split). -->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VETOR - Exercicio 3</title>
+    <link rel="stylesheet" href="/css/vetor.css">
+  </head>
+  <body>
+
+    <header>
+      <nav>
+        <a href="/index.html">Home</a>
+        <a href="/vetor/exercicio-1.html">Ex. 1</a>
+        <a href="/vetor/exercicio-2.html">Ex. 2</a>
+        <a href="/vetor/exercicio-3.html">Ex. 3</a>
+        <a href="/vetor/exercicio-4.html">Ex. 4</a>
+        <a href="/vetor/exercicio-5.html">Ex. 5</a>
+        <a href="/vetor/exercicio-6.html">Ex. 6</a>
+        <a href="/vetor/exercicio-7.html">Ex. 7</a>
+        <a href="/vetor/exercicio-8.html">Ex. 8</a>
+        <a href="/vetor/exercicio-9.html">Ex. 9</a>
+        <a href="/vetor/exercicio-10.html">Ex. 10</a>
+      </nav>
+    </header>
+
+    <div class="container">
+      <h2>DIGITE ALGUNS NOMES E OS VEREMOS NA ORDEM INVERSA:</h2>
+      <input type="text" id="nomes" placeholder="Separe os nomes por vírgula...">
+      <button onclick="inverterNomes()">Exibir Invertido</button>
+      <h3>Ordem Inversa:</h3>
+      <p id="resultado"></p>
+  
+    </div>
+   
+    <script>
+        function inverterNomes() {
+            let nomes = document.getElementById ("nomes").value;
+            let listaNomes = nomes.split (",").map (nome => nome.trim());
+            let nomesInvertidos = listaNomes.reverse().join ("<br>");
+            document.getElementById ("resultado").innerHTML = nomesInvertidos;
+        }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,114 @@
+<!-- Tem-se um conjunto de dados contendo a altura e o gênero (M ou F) de 15
+pessoas. Faça uma página web que calcule e escreva:
+• a maior e a menor altura do grupo;
+• a média de altura das mulheres;
+• o número de homens. -->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VETOR - Exercicio 5</title>
+    <link rel="stylesheet" href="/css/vetor.css">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/index.html">Home</a>
+        <a href="/vetor/exercicio-1.html">Ex. 1</a>
+        <a href="/vetor/exercicio-2.html">Ex. 2</a>
+        <a href="/vetor/exercicio-3.html">Ex. 3</a>
+        <a href="/vetor/exercicio-4.html">Ex. 4</a>
+        <a href="/vetor/exercicio-5.html">Ex. 5</a>
+        <a href="/vetor/exercicio-6.html">Ex. 6</a>
+        <a href="/vetor/exercicio-7.html">Ex. 7</a>
+        <a href="/vetor/exercicio-8.html">Ex. 8</a>
+        <a href="/vetor/exercicio-9.html">Ex. 9</a>
+        <a href="/vetor/exercicio-10.html">Ex. 10</a>
+      </nav>
+    </header>
+
+    <div class="container">
+      <h1>CCONJUNTO DE DADOS: ALTURA E PESO</h1>
+        <p>Digite a altura e o gênero da pessoa (exemplo: 1.75, M):</p>
+  
+        <label for="altura">Altura:</label>
+        <input type="number" id="altura" step="0.01" placeholder="Ex: 1.75" />
+  
+        <label for="genero">Gênero:</label>
+        <input type="text" id="genero" maxlength="1" placeholder="M ou F" />
+  
+        <button onclick="enviar()">Enviar</button>
+  
+      <div class="status" id="status"></div>
+      <div class="result" id="result"></div>
+  
+    </div>
+   
+    <script>
+      let contador = 0;
+      const maxPessoas = 15;
+      const alturas = [];
+      const generos = [];
+
+      function enviar() {
+        // Obter os valores dos inputs
+        const altura = parseFloat(document.getElementById("altura").value);
+        const genero = document.getElementById("genero").value.toUpperCase();
+
+        // Validação
+        if (isNaN(altura) || (genero !== "M" && genero !== "F")) {
+          alert(
+            'Por favor, insira dados válidos (altura numérica e gênero "M" ou "F").'
+          );
+          return;
+        }
+
+        // Armazenar os dados
+        alturas.push(altura);
+        generos.push(genero);
+
+        // Incrementar o contador
+        contador++;
+
+        // Limpar os campos
+        document.getElementById("altura").value = "";
+        document.getElementById("genero").value = "";
+
+        // Atualizar o status
+        const statusDiv = document.getElementById("status");
+        statusDiv.innerHTML = `Você já inseriu ${contador} de ${maxPessoas} pessoas.`;
+
+        // Se o número de pessoas atingir o máximo, realizar o cálculo
+        if (contador === maxPessoas) {
+          calcular();
+        }
+      }
+
+      function calcular() {
+        // Cálculos
+        const maiorAltura = Math.max(...alturas);
+        const menorAltura = Math.min(...alturas);
+        const mulheres = alturas.filter((_, index) => generos[index] === "F");
+        const mediaMulheres =
+          mulheres.length > 0
+            ? mulheres.reduce((sum, altura) => sum + altura, 0) /
+              mulheres.length
+            : 0;
+        const numHomens = generos.filter((genero) => genero === "M").length;
+
+        // Exibir os resultados
+        const resultDiv = document.getElementById("result");
+        resultDiv.innerHTML = `
+                Maior altura: ${maiorAltura} metros<br>
+                Menor altura: ${menorAltura} metros<br>
+                Média de altura das mulheres: ${mediaMulheres.toFixed(
+                  2
+                )} metros<br>
+                Número de homens: ${numHomens}
+            `;
+      }
+    </script>
+  </body>
+</html>

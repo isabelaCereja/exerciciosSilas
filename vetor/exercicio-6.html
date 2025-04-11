@@ -1,0 +1,111 @@
+<!-- Cada espectador de um cinema respondeu a um questionário no qual
+constava sua idade e a sua opinião em relação ao filme: ótimo - 3, bom - 2,
+regular -1. Faça uma página web que receba a idade e a opinião de 15
+espectadores, calcule e imprima:
+• a média das idades das pessoas que responderam ótimo;
+• a quantidade de pessoas que responderam regular;
+• a porcentagem de pessoas que responderam bom entre todos os espectadores analisados. -->
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VETOR - Exercicio 6</title>
+    <link rel="stylesheet" href="/css/vetor.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="/index.html">Home</a>
+            <a href="/vetor/exercicio-1.html">Ex. 1</a>
+            <a href="/vetor/exercicio-2.html">Ex. 2</a>
+            <a href="/vetor/exercicio-3.html">Ex. 3</a>
+            <a href="/vetor/exercicio-4.html">Ex. 4</a>
+            <a href="/vetor/exercicio-5.html">Ex. 5</a>
+            <a href="/vetor/exercicio-6.html">Ex. 6</a>
+            <a href="/vetor/exercicio-7.html">Ex. 7</a>
+            <a href="/vetor/exercicio-8.html">Ex. 8</a>
+            <a href="/vetor/exercicio-9.html">Ex. 9</a>
+            <a href="/vetor/exercicio-10.html">Ex. 10</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h2>QUESTIONÁRIO DE OPINIÃO SOBRE FILME</h2>
+        <form id="formularioQuestionario">
+            <label for="idade">Idade:</label>
+            <br>
+            <input type="number" id="idade" name="idade" required>
+            <br><br>
+            <label for="opiniao">Opinião sobre o filme:</label>
+            <select id="opiniao" name="opiniao" required>
+                <option value="3">Ótimo</option>
+                <option value="2">Bom</option>
+                <option value="1">Regular</option>
+            </select>
+            <br><br>
+            <button type="submit">Enviar</button>
+        </form>
+        <div class="result-container">
+            <h3>Resultados (exibidos a partir de 15 respostas):</h3>
+            <p id="mediaIdade"></p>
+            <p id="quantidadeRegular"></p>
+            <p id="percentualBom"></p>
+        </div>
+    </div>
+
+    <script>
+        let dadosQuestionario = [];
+
+        document.getElementById("formularioQuestionario").addEventListener("submit", function (evento) {
+            evento.preventDefault();
+
+            let idade = parseInt(document.getElementById("idade").value);
+            let opiniao = parseInt(document.getElementById("opiniao").value);
+
+            dadosQuestionario.push({ idade, opiniao });
+
+            if (dadosQuestionario.length >= 15) {
+                exibirResultados();
+            }
+
+            document.getElementById("formularioQuestionario").reset();
+        });
+
+        function exibirResultados() {
+            let totalIdadeOtimo = 0;
+            let countOtimo = 0;
+            let countRegular = 0;
+            let countBom = 0;
+
+            dadosQuestionario.forEach(item => {
+                if (item.opiniao === 3) {
+                    totalIdadeOtimo += item.idade;
+                    countOtimo++;
+                } else if (item.opiniao === 1) {
+                    countRegular++;
+                } else if (item.opiniao === 2) {
+                    countBom++;
+                }
+            });
+
+            // Média das idades das pessoas que responderam "ótimo"
+            let mediaIdade = countOtimo > 0 ? (totalIdadeOtimo / countOtimo).toFixed(2) : 0;
+
+            // Quantidade de pessoas que responderam "regular"
+            let quantidadeRegular = countRegular;
+
+            // Percentual de pessoas que responderam "bom"
+            let percentualBom = ((countBom / 15) * 100).toFixed(2);
+
+            document.getElementById("mediaIdade").textContent = `Média das idades das pessoas que responderam "Ótimo": ${mediaIdade}`;
+            document.getElementById("quantidadeRegular").textContent = `Quantidade de pessoas que responderam "Regular": ${quantidadeRegular}`;
+            document.getElementById("percentualBom").textContent = `Porcentagem de pessoas que responderam "Bom": ${percentualBom}%`;
+        }
+    </script>
+
+</body>
+
+</html>

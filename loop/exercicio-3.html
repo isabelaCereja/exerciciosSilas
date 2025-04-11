@@ -1,0 +1,78 @@
+<!-- Com base no exercício anterior, faça a checagem do nome e dos gêneros e caso esteja errado solicite ao usuário nova digitação.
+Após exibir o resultado, limpar os campos (value="")e colocar o cursor no nome (.focus()). -->
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LOOP - Exercício 3</title>
+  <link rel="stylesheet" href="/css/loop.css">
+</head>
+
+<body>
+
+  <header>
+    <nav>
+      <a href="/index.html">Home </a>
+      <a href="/loop/exercicio-1.html">Ex. 1</a>
+      <a href="/loop/exercicio-2.html">Ex. 2</a>
+      <a href="/loop/exercicio-3.html">Ex. 3</a>
+      <a href="/loop/exercicio-4.html">Ex. 4</a>
+      <a href="/loop/exercicio-5.html">Ex. 5</a>
+      <a href="/loop/exercicio-6.html">Ex. 6</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h1>SENHORAS E SENHORES 2</h1>
+
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" placeholder="Digite seu nome" required />
+
+    <label for="genero">Gênero (M/F):</label>
+    <input type="text" id="genero" placeholder="Digite M ou F" maxlength="1" required />
+
+    <button onclick="exibir()">Exibir Saudação</button>
+
+    <p id="saudacao"></p>
+  </div>
+
+  <script>
+    function exibir() {
+      const nomeInput = document.getElementById("nome");
+      const generoInput = document.getElementById("genero");
+      const saudacaoEl = document.getElementById("saudacao");
+
+      const nome = nomeInput.value.trim();
+      const genero = generoInput.value.trim().toUpperCase();
+
+      if (nome === "") {
+        alert("Por favor, digite seu nome.");
+        nomeInput.focus();
+        return;
+      }
+
+      if (genero !== "M" && genero !== "F") {
+        alert("Por favor, insira M para masculino ou F para feminino.");
+        generoInput.focus();
+        return;
+      }
+
+      saudacaoEl.innerText = genero === "M"
+        ? `Olá, Sr. ${nome}!`
+        : `Olá, Sra. ${nome}!`;
+
+      // Limpa os campos de entrada
+      nomeInput.value = "";
+      generoInput.value = "";
+
+      setTimeout(() => {
+        nomeInput.focus();
+      }, 50);
+    }
+  </script>
+</body>
+
+</html>

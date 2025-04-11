@@ -1,0 +1,81 @@
+<!--10. Loteria: Sorteie 6 números de 1 a 60 e os guarde em um vetor. Peça ao usuário para digitar 6 números e os guarde em outro vetor. 
+Em seguida informe os números digitados, os sorteados e quantos números ele acertou.-->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VETOR - Exercício 10</title>
+    <link rel="stylesheet" href="/css/vetor.css">
+  </head>
+  <body>
+    <header>
+      <nav>
+          <a href="/index.html">Home</a>
+          <a href="/vetor/exercicio-1.html">Ex. 1</a>
+          <a href="/vetor/exercicio-2.html">Ex. 2</a>
+          <a href="/vetor/exercicio-3.html">Ex. 3</a>
+          <a href="/vetor/exercicio-4.html">Ex. 4</a>
+          <a href="/vetor/exercicio-5.html">Ex. 5</a>
+          <a href="/vetor/exercicio-6.html">Ex. 6</a>
+          <a href="/vetor/exercicio-7.html">Ex. 7</a>
+          <a href="/vetor/exercicio-8.html">Ex. 8</a>
+          <a href="/vetor/exercicio-9.html">Ex. 9</a>
+          <a href="/vetor/exercicio-10.html">Ex. 10</a>
+      </nav>
+  </header>
+
+    <div class="container">
+      <h1>SORTEIO DE LOTERIA!</h1>
+      <button onclick="sorteioLoteria()">Sortear e Verificar Acertos</button>
+  
+      <div id="resultado"></div>
+    </div>
+    
+    <script>
+      function sorteioLoteria() {
+        let sorteados = [];
+        while (sorteados.length < 6) {
+          let numero = Math.floor(Math.random() * 60) + 1;
+          if (!sorteados.includes(numero)) {
+            sorteados.push(numero);
+          }
+        }
+
+        let digitados = [];
+        for (let i = 1; i <= 6; i++) {
+          let numero = parseInt(
+            prompt("Digite o " + i + "º número (de 1 a 60):")
+          );
+          while (
+            isNaN(numero) ||
+            numero < 1 ||
+            numero > 60 ||
+            digitados.includes(numero)
+          ) {
+            alert(
+              "Número inválido ou repetido. Digite um número entre 1 e 60 que ainda não foi escolhido."
+            );
+            numero = parseInt(
+              prompt("Digite o " + i + "º número (de 1 a 60):")
+            );
+          }
+          digitados.push(numero);
+        }
+
+        let acertos = sorteados.filter((num) => digitados.includes(num)).length;
+
+        document.getElementById("resultado").innerHTML = `
+                <p><strong>Números Sorteados:</strong> ${sorteados.join(
+                  ", "
+                )}</p>
+                <p><strong>Números Digitados:</strong> ${digitados.join(
+                  ", "
+                )}</p>
+                <p><strong>Você acertou ${acertos} número(s).</strong></p>
+            `;
+      }
+    </script>
+  </body>
+</html>

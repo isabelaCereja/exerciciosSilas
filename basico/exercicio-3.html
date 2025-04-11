@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BÁSICO - Exercício 3</title>
+    <link rel="stylesheet" href="/css/basico.css" />
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <a href="/index.html">Home</a>
+        <a href="/basico/exercicio-3.html">Ex. 3</a>
+        <a href="/basico/exercicio-4.html">Ex. 4</a>
+      </nav>
+    </header>
+
+    <div class="container">
+      <h1>MÉDIA DE NOTAS</h1>
+
+      <label for="nota1">Primeira Nota:</label>
+      <input type="number" id="nota1" min="0" max="10" step="0.1" />
+
+      <label for="nota2">Segunda Nota:</label>
+      <input type="number" id="nota2" min="0" max="10" step="0.1" />
+
+      <button onclick="calcular()">
+        <span>Concluir</span>
+      </button>
+
+      <p id="resultado"></p>
+    </div>
+
+    <script>
+      function calcular() {
+        let nota1 = parseFloat(document.getElementById("nota1").value);
+        let nota2 = parseFloat(document.getElementById("nota2").value);
+        let resultado = "";
+
+        // Verificar se as notas são válidas
+        if (isNaN(nota1) || isNaN(nota2) || nota1 < 0 || nota2 < 0) {
+          resultado = "Por favor, insira notas válidas (maiores que 0).";
+        } else {
+          let media = (nota1 + nota2) / 2;
+
+          if (media >= 7) {
+            resultado = "Aprovado! Média: " + media.toFixed(2);
+          } else {
+            resultado = "Recuperação! Média: " + media.toFixed(2);
+          }
+        }
+
+        document.getElementById("resultado").innerText = resultado;
+      }
+    </script>
+  </body>
+</html>

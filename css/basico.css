@@ -1,0 +1,99 @@
+/* Globais */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #99cbf7;
+    display: flex;
+    align-items: center;          
+    flex-direction: column;       
+    height: 100vh;               
+    color: #0a4579;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+header {
+    width: 100vw;               
+    padding: 20px;
+    background-color: #77abd9cb;
+    text-align: center;  
+    margin-bottom: 10%;       
+    margin-top: 0%;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+  }
+  
+  nav a {
+    color: #0a4579;
+    text-decoration: none;
+  }
+
+.container {
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    gap: 10px;
+    width: 30rem;
+    align-items: center;
+    justify-content: center;
+    background-color: #77abd9cb;
+}
+
+input {
+    background-color: #b1dbff;
+    text-align: center;
+    padding: 5px;
+}
+
+button {
+    padding: 5px;
+    background-color: #3174af;
+    color: azure;
+}
+
+input,button{
+    width: 70%;
+    border: none;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    header {
+        padding: 15px; 
+    }
+
+    h1{
+        font-size: 20px;
+    }
+    
+    .container {
+        width: 90%; 
+        max-width: none; 
+    }
+
+    input, button {
+        width: 100%; 
+        max-width: 70%; 
+    }
+}
+
+
+@media (max-width: 900px) and (min-width: 601px) {
+    .container {
+        width: 80%; 
+    }
+
+    input, button {
+        width: 60%; 
+    }
+}
