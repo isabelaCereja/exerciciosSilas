@@ -16,5 +16,5 @@ A equipe responsável por desenvolver esse projeto é composta por:
 - **Cucick2007** (Manuela Cucick);
 
 
-🔗 Acesse nossa atividade:
+🔗 Acesse nossa atividade: https://isabelacereja.github.io/exerciciosSilas/
 
